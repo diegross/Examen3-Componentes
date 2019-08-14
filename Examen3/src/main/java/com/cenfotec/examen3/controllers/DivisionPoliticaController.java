@@ -29,25 +29,22 @@ public class DivisionPoliticaController {
 
 	private DivisionPoliticaRepository repository;
 
-	@Autowired
-	private RigRepository Rigrepository;
-
 	DivisionPoliticaController(DivisionPoliticaRepository politicaRepository) {
 		this.repository = politicaRepository;
 	}
 
-	@GetMapping
+	@GetMapping({ "/lista" })
 	public List findAll() {
 		return repository.findAll();
 	}
 
-	@GetMapping(path = { "listar/{id}" })
+	@GetMapping(path = { "lista/{id}" })
 	public ResponseEntity<divisionpolitica> findById(@PathVariable long id) {
 		return repository.findById(id).map(record -> ResponseEntity.ok().body(record))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@PostMapping(path = { "/{id}" })
+	@PostMapping(path = { "registrar/{id}" })
 	public divisionpolitica create(@PathVariable Long id, @RequestBody divisionpolitica division) {
 		division.setIdPais(id);
 		repository.save(division);

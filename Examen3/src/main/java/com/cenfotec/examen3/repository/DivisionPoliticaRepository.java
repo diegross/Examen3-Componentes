@@ -1,5 +1,6 @@
 package com.cenfotec.examen3.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,9 +12,7 @@ import com.cenfotec.examen3.model.rig;
 @Repository
 public interface DivisionPoliticaRepository extends JpaRepository<divisionpolitica, Long>  {
 
-	Optional<divisionpolitica> save(long id_pais);
 
-	
 
 }
 

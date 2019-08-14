@@ -19,7 +19,7 @@ import com.cenfotec.examen3.model.rig;
 import com.cenfotec.examen3.repository.RigRepository;
 
 @RestController
-@RequestMapping({ "/examen3" })
+@RequestMapping({ "/rig" })
 public class RigController {
 
 	private RigRepository repository;
@@ -28,7 +28,7 @@ public class RigController {
 		this.repository = rigRepository;
 	}
 
-	@GetMapping
+	@GetMapping({ "/lista" })
 	public List findAll() {
 		return repository.findAll();
 	}
@@ -39,7 +39,7 @@ public class RigController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 
-	@PostMapping
+	@PostMapping({ "/registrar" })
 	public rig create(@RequestBody rig rig) {
 		return repository.save(rig);
 	}
