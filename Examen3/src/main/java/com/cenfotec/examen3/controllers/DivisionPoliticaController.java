@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cenfotec.examen3.model.divisionpolitica;
+import com.cenfotec.examen3.model.divisionregional;
 import com.cenfotec.examen3.model.rig;
 import com.cenfotec.examen3.repository.DivisionPoliticaRepository;
 import com.cenfotec.examen3.repository.RigRepository;
@@ -49,6 +50,19 @@ public class DivisionPoliticaController {
 		division.setIdPais(id);
 		repository.save(division);
 		return repository.save(division);
+	}
+	
+	@GetMapping(path = { "/buscar/{nombre_provincia}" })
+	public divisionpolitica buscarNombre(@PathVariable String nombre_provincia) {
+		
+		List<divisionpolitica> provincias = repository.findAll();
+		
+		for (divisionpolitica divisionpolitica : provincias) {
+			if(divisionpolitica.getNombre().equals(nombre_provincia)) {
+			return divisionpolitica;	
+			}
+		}
+		return null; 
 	}
 
 }

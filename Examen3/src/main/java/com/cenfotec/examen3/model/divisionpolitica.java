@@ -30,4 +30,12 @@ public class divisionpolitica {
 	public void setIdPais(Long id_pais) {
 		this.id_pais = id_pais;
 	}
+	
+	public String getNombre() {
+		return nombre_provincia;
+	}
+
+	public void setNombre(String nombre_provincia) {
+		this.nombre_provincia = nombre_provincia;
+	}
 }

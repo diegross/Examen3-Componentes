@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cenfotec.examen3.model.divisionregional;
 import com.cenfotec.examen3.repository.DivisionRegionalRepository;
 
-
-
 @RestController
 @RequestMapping({ "/regional" })
 public class DivisionRegionalController {
@@ -42,6 +40,19 @@ public class DivisionRegionalController {
 		division.setIdProvincia(id_provincia);
 		repository.save(division);
 		return repository.save(division);
+	}
+	
+	@GetMapping(path = { "/buscar/{nombre}" })
+	public divisionregional buscarNombre(@PathVariable String nombre) {
+		
+		List<divisionregional> regiones = repository.findAll();
+		
+		for (divisionregional divisionregional : regiones) {
+			if(divisionregional.getNombre().equals(nombre)) {
+			return divisionregional;	
+			}
+		}
+		return null; 
 	}
 	
 }

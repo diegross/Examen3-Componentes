@@ -13,14 +13,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-public class divisionregional {
+public class animal {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nombre;
-	private Long id_provincia;
 	private Long id_pais;
+	private String nombre_popular;
+	private String nombre_cientifico;
+	private String peligro_extinsion;
+	private double poblacion_aprox;
 	
 	public Long getIdPais() {
 		return id_pais;
@@ -30,20 +32,12 @@ public class divisionregional {
 		this.id_pais = id_pais;
 	}
 	
-	public Long getIdProvincia() {
-		return id_provincia;
-	}
-
-	public void setIdProvincia(Long id_provincia) {
-		this.id_provincia = id_provincia;
-	}
-	
 	public String getNombre() {
-		return nombre;
+		return nombre_cientifico;
 	}
 
-	public void setNombre(String nombre_provincia) {
-		this.nombre = nombre_provincia;
+	public void setNombre(String nombre_cientifico) {
+		this.nombre_cientifico = nombre_cientifico;
 	}
 
 }
