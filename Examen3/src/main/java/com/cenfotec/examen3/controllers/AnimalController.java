@@ -26,18 +26,18 @@ public class AnimalController {
 	}
 	
 	@GetMapping({ "/lista" })
-	public List findAll() {
+	public List obtenerListaCompleta() {
 		return repository.findAll();
 	}
 	
 	@GetMapping(path = { "lista/{id}" })
-	public ResponseEntity<animal> findById(@PathVariable long id) {
+	public ResponseEntity<animal> obtenerListaPorId(@PathVariable long id) {
 		return repository.findById(id).map(record -> ResponseEntity.ok().body(record))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@PostMapping(path = { "registrar/{id}" })
-	public animal create(@PathVariable Long id, @RequestBody animal animal) {
+	public animal registrarAnimal(@PathVariable Long id, @RequestBody animal animal) {
 		animal.setIdPais(id);
 		repository.save(animal);
 		return repository.save(animal);

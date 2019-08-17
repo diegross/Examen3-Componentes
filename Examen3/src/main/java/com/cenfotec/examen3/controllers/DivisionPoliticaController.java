@@ -35,18 +35,18 @@ public class DivisionPoliticaController {
 	}
 
 	@GetMapping({ "/lista" })
-	public List findAll() {
+	public List obtenerListaCompleta() {
 		return repository.findAll();
 	}
 
 	@GetMapping(path = { "lista/{id}" })
-	public ResponseEntity<divisionpolitica> findById(@PathVariable long id) {
+	public ResponseEntity<divisionpolitica> obtenerListaPorId(@PathVariable long id) {
 		return repository.findById(id).map(record -> ResponseEntity.ok().body(record))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@PostMapping(path = { "registrar/{id}" })
-	public divisionpolitica create(@PathVariable Long id, @RequestBody divisionpolitica division) {
+	public divisionpolitica registrarDivisionPolitica(@PathVariable Long id, @RequestBody divisionpolitica division) {
 		division.setIdPais(id);
 		repository.save(division);
 		return repository.save(division);

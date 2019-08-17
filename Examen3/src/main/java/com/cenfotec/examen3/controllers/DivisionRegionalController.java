@@ -24,18 +24,18 @@ public class DivisionRegionalController {
 	}
 	
 	@GetMapping({ "/lista" })
-	public List findAll() {
+	public List obtenerListaCompleta() {
 		return repository.findAll();
 	}
 	
 	@GetMapping(path = { "lista/{id}" })
-	public ResponseEntity<divisionregional> findById(@PathVariable long id) {
+	public ResponseEntity<divisionregional> obtenerListaPorId(@PathVariable long id) {
 		return repository.findById(id).map(record -> ResponseEntity.ok().body(record))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@PostMapping(path = { "registrar/{id_pais}/{id_provincia}" })
-	public divisionregional create(@PathVariable Long id_pais,@PathVariable Long id_provincia, @RequestBody divisionregional division) {
+	public divisionregional registrarDivisionRegional(@PathVariable Long id_pais,@PathVariable Long id_provincia, @RequestBody divisionregional division) {
 		division.setIdPais(id_pais);
 		division.setIdProvincia(id_provincia);
 		repository.save(division);
